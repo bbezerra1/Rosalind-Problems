@@ -243,7 +243,19 @@ def find_shared_motif(arq):
 
                 except IndexError:
                     print('IndexError, end of the string')
-
+                    
+             # Takes the motifs and tests it to the others sequences
+            for sequence, motif in[(sequence, motif) for sequence in seqs[2::] for motif in motifs]:
+                if ''.join(motif) in sequence:
+                    print(f'The motif {motif} was finded in the sequence!')
+                else:
+                    for i, j in enumerate(motif):
+                        motif.drop([j])
+                        if ''.join(motif) in sequence:
+                            break
+                        
+                
+            
         else:
             i += 1
             motifs.append([])
